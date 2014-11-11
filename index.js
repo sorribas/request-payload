@@ -17,7 +17,6 @@ var requestPayload = function(req, opts, cb) {
     buffer += chunk;
     cb();
   };
-  writable._
   writable.destroy = function() {
     this.emit('close');
   };
