@@ -8,9 +8,12 @@ var requestPayload = function(req, opts, cb) {
 
   var buffer = '';
   var length = 0;
+
   var writable = new Writable();
   writable._write = function(chunk, enc, cb) {
     length += chunk.length;
+    if (opts.limit && length > opts.limit) return req.destroy();
+
     buffer += chunk;
     cb();
   };
