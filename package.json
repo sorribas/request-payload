@@ -1,0 +1,33 @@
+{
+  "name": "request-payload",
+  "version": "0.1.0",
+  "description": "Get the payload of an HTTP request.",
+  "main": "index.js",
+  "dependencies": {
+    "pump": "^1.0.0",
+    "through2": "^0.6.3",
+    "utf8-stream": "^0.0.0"
+  },
+  "devDependencies": {
+    "request": "^2.47.0",
+    "tape": "^3.0.3"
+  },
+  "scripts": {
+    "test": "node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sorribas/request-payload"
+  },
+  "keywords": [
+    "payload",
+    "http",
+    "request"
+  ],
+  "author": "Eduardo Sorribas <eduardo@sorribas.org> (http://sorribas.org/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sorribas/request-payload/issues"
+  },
+  "homepage": "https://github.com/sorribas/request-payload"
+}
