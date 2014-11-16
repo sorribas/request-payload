@@ -1,27 +1,15 @@
-var utf8Stream = require('utf8-stream');
-var pump = require('pump');
-var Writable = require('stream').Writable;
-
 var requestPayload = function(req, opts, cb) {
   if (typeof opts === 'function') return requestPayload(req, {}, opts);
-  var u8 = utf8Stream();
 
   var buffer = '';
   var length = 0;
-
-  var writable = new Writable();
-  writable._write = function(chunk, enc, cb) {
-    length += chunk.length;
-    if (opts.limit && length > opts.limit) return req.destroy();
-
-    buffer += chunk;
-    cb();
-  };
-  writable.destroy = function() {
-    this.emit('close');
-  };
-
-  pump(req, u8, writable, function() {
+  
+  req.setEncoding('utf-8');
+  req.on('data', function(data) {
+    if (opts.limit && (length += Buffer.byteLength(data)) > opts.limit) return req.destroy();
+    buffer += data;
+  });
+  req.on('end', function() {
     cb(buffer);
   });
 };
