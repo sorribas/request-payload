@@ -1,6 +1,8 @@
 request-payload
 ===============
 
+[![build status](https://secure.travis-ci.org/sorribas/request-payload.png)](http://travis-ci.org/sorribas/request-payload)
+
 Get the payload of an HTTP request. Supports limiting the size of the payload.
 
 ## Install
